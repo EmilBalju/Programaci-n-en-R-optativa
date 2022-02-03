@@ -88,5 +88,11 @@ bdtaxi2c <- bdtaxi %>%
 #d) Se desea conocer por mes, a cuanto ascienden los ingresos y gastos totales, excluyendo los conceptos de 
 #bono y cuotas de los gastos y manteniendo todo lo demas. Generar un tibble en donde la primer columna muestre
 #el mes en cuestion, la segunda columna debe de indicar si se trata del ingreso o del gasto y la última 
-#columna debe mostrar la cifra a la que asciende. #0.5 pts. 
+#columna debe mostrar la cifra a la que asciende. #0.5 pts.
+
+bdtaxi2d <- bdtaxi %>%
+  filter(Concepto != 'Bono' & Concepto !='Cuota') %>%
+  group_by(Mes,Tipo) %>%
+  summarize(Cifra=sum(Total))
+  
 
